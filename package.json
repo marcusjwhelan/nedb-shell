@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/marcusjwhelan/nedb-shell/issues"
   },
-  "homepage": "https://github.com/marcusjwhelan/nedb-shell#readme"
+  "homepage": "https://github.com/marcusjwhelan/nedb-shell#readme",
+  "dependencies": {
+    "nedb": "^1.8.0"
+  }
 }
