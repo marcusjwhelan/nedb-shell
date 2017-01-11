@@ -1,0 +1,27 @@
+{
+  "name": "nedb-shell",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "description": "A mongo like shell for Nedb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcusjwhelan/nedb-shell.git"
+  },
+  "keywords": [
+    "nedb",
+    "nedb-shell",
+    "shell"
+  ],
+  "author": "Marcus Whelan <marcus.j.whelan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcusjwhelan/nedb-shell/issues"
+  },
+  "homepage": "https://github.com/marcusjwhelan/nedb-shell#readme"
+}
