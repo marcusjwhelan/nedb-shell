@@ -39,5 +39,9 @@ jspm_packages
 # Ignore IDE file
 .idea
 .idea/*
-**/.idea/workspace.xml
 **/.idea/tasks.xml
+**/.idea/jsLibraryMappings.xml
+**/.idea/nedb-shell.iml
+**/.idea/workspace.xml
+**/.idea/modules.xml
+**/.idea/vcs.xml
