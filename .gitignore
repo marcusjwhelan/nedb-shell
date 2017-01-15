@@ -38,3 +38,6 @@ jspm_packages
 
 # Ignore IDE file
 .idea
+.idea/*
+**/.idea/workspace.xml
+**/.idea/tasks.xml
