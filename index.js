@@ -1,3 +1,2 @@
-exports.printMsg = function () {
-  console.log("Hello nedb-shell");
-};
+#!/usr/bin/env node
+require('./src/shell');
