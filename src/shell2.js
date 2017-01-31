@@ -1,3 +1,6 @@
-#!/bin/bash
+module.exports = function (input) {
+  console.log('input', input);
+}
 
-node -r module $@
+/*#!/bin/bash
+node -r  nedbShell $@*/
