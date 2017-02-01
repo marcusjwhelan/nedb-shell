@@ -8,3 +8,53 @@
 * at the beginning.
 *
 * */
+
+
+/*           ALL THESE COME FROM MONGO
+*  Ideas for other modules
+*
+*   - collectionName will be replaced with []
+*   - datastore is the same as collection since that is what nedb
+*     calls a collection
+*
+*   db.[].count()
+*   db.[].remove()
+*   db.[].drop()
+*   db.[].insert()
+*   db.[].insertMany()
+*   db.[].find()
+*   db.[].findOne()
+*   db.[].aggregate()
+*   db.[].update()
+*   db.[].updateMany()
+*   db.[].updateOne()
+*
+*  Specific modules to be added directly onto the db module
+*
+*   db.cloneCollection()
+*   db.cloneDatabase()
+*   db.Help()
+*   db.copyDatabase()
+*   db.createDatastore()
+*   db.getName()
+*
+*   Possibly AUth and Roles? much later
+*
+*   db.auth()
+*   db.createUser()
+*   db.udpateUser()
+*   db.changeUserPassword()
+*   ...
+*   ..
+*   db.dropRole()
+*   db.getRole()
+*   ...
+*   ..
+*
+*   use(selectDatabase)?
+*   use(selectDatastore)?
+*
+*   Constructors ?
+*
+*
+* */
