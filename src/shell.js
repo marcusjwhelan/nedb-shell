@@ -4,7 +4,7 @@ const co      = require('co'),
       program = require('commander'),
       pkg     = require('../package.json'),
       chalk   = require('chalk'),
-      route    = require('./db/path');
+      path    = require('./db/path');
 
 
 
@@ -38,9 +38,7 @@ program
 program
   .action(function (directory) {
     co(function *() {
-      //let path = new route();
-      route.prop = directory;
-      //let hmm = route.prop();
+      path.prop = directory;
       // Anything that needs to be done before node process starts
       console.log(('ls all datastores in directory'));
       

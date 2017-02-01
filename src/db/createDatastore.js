@@ -5,8 +5,9 @@ const db = require('./db'),
       Datastore = require('nedb');
 
 const _new = (query) => {
-  let db = new Datastore(query);
-  console.log(query.filename);
+  let q = query;
+  q.filename = `${path.prop}/${query.filename}`;
+  let db = new Datastore(q);
   db.loadDatabase(function (err) {
     if(err) {
       console.log(err);

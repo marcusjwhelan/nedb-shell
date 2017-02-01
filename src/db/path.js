@@ -7,12 +7,10 @@ class Path{
   }
   
   get prop() {
-    console.log('getter');
     return this._path;
   }
   
   set prop(path){
-    console.log('setter');
     this._path = path;
   }
 }
