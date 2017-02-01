@@ -27,7 +27,7 @@ const done = () => {
 };
 
 program
-  .usage('<file ...>')
+  .usage('<Datastore Directory ...>')
   .version(` NeDB: ${pkg.dependencies.nedb} \n NeDB-Shell: ${pkg.version}`);
 
 program
@@ -35,7 +35,7 @@ program
     co(function *() {
       
       // Anything that needs to be done before node process starts
-      console.log(('here I will output the databases?'));
+      console.log(('ls all datastores in directory'));
       
       console.log("which datastore would you like to use?");
       

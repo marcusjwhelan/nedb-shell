@@ -1,6 +1,7 @@
 module.exports = {
   insert: require('./insert'),
-  find: require('./find')
+  find: require('./find'),
+  createDatastore: require('./createDatastore')
 }
 
 // here I want to require all modules concerning the database.

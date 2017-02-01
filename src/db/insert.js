@@ -3,7 +3,7 @@
        Datastore = require('nedb');
 
  const insert = (query) => {
-   console.log(query);
+   console.log(typeof query);
  };
  
  module.exports = insert;
