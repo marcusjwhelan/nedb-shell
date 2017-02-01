@@ -3,7 +3,7 @@
 class Path{
   
   constructor () {
-    this._path = 'd';
+    this._path = '';
   }
   
   get prop() {
@@ -14,7 +14,6 @@ class Path{
     this._path = path;
   }
 }
-//const path = new path();
 
 
 module.exports = (new Path);
