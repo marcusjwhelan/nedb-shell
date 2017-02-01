@@ -3,12 +3,17 @@ const co      = require('co'),
       prompt  = require('co-prompt'),
       program = require('commander'),
       pkg     = require('../package.json'),
-      chalk   = require('chalk');
+      chalk   = require('chalk'),
+      route    = require('./db/path');
 
 
 
 const done = () => {
-  const repl = require('repl').start({prompt: chalk.green('> '), useGlobal: true});
+  const repl = require('repl').start({
+    prompt: chalk.green('> '),
+    useGlobal: true,
+    ignoreUndefined: true
+  });
   
   // Import all necassary modules into node shell
   /*
@@ -31,9 +36,11 @@ program
   .version(` NeDB: ${pkg.dependencies.nedb} \n NeDB-Shell: ${pkg.version}`);
 
 program
-  .action(function (file) {
+  .action(function (directory) {
     co(function *() {
-      
+      //let path = new route();
+      route.prop = directory;
+      //let hmm = route.prop();
       // Anything that needs to be done before node process starts
       console.log(('ls all datastores in directory'));
       
@@ -41,7 +48,7 @@ program
       
       let input = yield prompt(chalk.green('> '));
       
-      console.log(chalk.blue(`Datastore chosen: ${chalk.white(input)}, in ${chalk.white(file)}.`));
+      console.log(chalk.blue(`Datastore chosen: ${chalk.white(input)}, in ${chalk.white(directory)}.`));
   
       console.log(chalk.blue(`NeDB Shell: ${new Date()}
 Hello Travis`));
