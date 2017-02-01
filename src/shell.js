@@ -1,11 +1,30 @@
+'use strict';
 const co      = require('co'),
       prompt  = require('co-prompt'),
       program = require('commander'),
       pkg     = require('../package.json'),
-      chalk   = require('chalk'),
-      mod     = require('./shell3'),
-      repl    = require('repl');
+      chalk   = require('chalk');
 
+
+
+const done = () => {
+  const repl = require('repl').start({prompt: chalk.green('> '), useGlobal: true});
+  
+  // Import all necassary modules into node shell
+  /*
+  *    Example of moduleA and moduleB
+  *
+  *    > moduleA.echo('test')
+  *    echo from A test
+  *
+  *    > moduleB.add(2,3)
+  *    5
+  *
+  * */
+  for (let myModule of ['moduleA', 'moduleB', 'db']) {
+    repl.context[myModule] = require(`./${myModule}`);
+  }
+};
 
 program
   .usage('[options] <file ...>')
@@ -15,28 +34,29 @@ program
   .arguments('<file>')
   .action(function (file) {
     co(function *() {
-      /*let input = yield prompt(chalk.green(`> `));
-      console.log('input: %s Path: %s', input, file);*/
       
+      // Anything that needs to be done before node process starts
       console.log(('here I will output the databases?'));
-      console.log("which datastore would you like to use?");
-      let input = yield prompt(chalk.green('> '));
-      console.log(chalk.blue(`Datastore chosen: ${chalk.white(input)}, in ${chalk.white(file)}.`));
       
-      function myEval(cmd, context, filename, callback) {
-        callback(null, mod(cmd));
-      }
+      console.log("which datastore would you like to use?");
+      
+      let input = yield prompt(chalk.green('> '));
+      
+      console.log(chalk.blue(`Datastore chosen: ${chalk.white(input)}, in ${chalk.white(file)}.`));
   
-      repl.start({prompt: chalk.green('> '), eval: myEval});
+      console.log(`NeDB Shell: ${new Date()}
+Hello Travis`)
+      // -----------------------------------------------------
+      
+      // Once all necessary data has been gathered launch node
+       done();
+      // -----------------------------------------------------
     })
   })
-  .parse(process.argv)
+  .parse(process.argv);
 
 // Display red help if no arguments entered
 if (!process.argv.slice(2).length) {
   program.outputHelp(txt => chalk.red(txt));
 }
 
-
-/*#!/usr/bin/env node --harmony
- require('./src/shell2');*/
