@@ -1,12 +1,18 @@
 'use strict';
  const db = require('./db'),
-       nedb = require('nedb');
+       Datastore = require('nedb');
 
-class insert extends db{
+ const insert = (query) => {
+   console.log(query);
+ };
+ 
+ module.exports = insert;
+ 
+/*class insert extends db{
   
 };
  
- module.exports.insert = insert;
+ module.exports.insert = insert;*/
    
 // or would it be
 

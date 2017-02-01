@@ -1,5 +1,11 @@
 'use strict';
+const datastore = require('nedb'),
+      _insert    = require('./insert');
 
-module.exports = class db{
-  
+
+const db = () => {
+  console.log("hello");
+  return { insert: _insert };
 };
+
+module.exports.db = db;

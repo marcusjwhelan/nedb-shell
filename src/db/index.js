@@ -1,4 +1,10 @@
+module.exports = {
+  insert: require('./insert'),
+  find: require('./find')
+}
+
 // here I want to require all modules concerning the database.
+
 /*
 * so when they type db it takes them to this module and the . would
 * be extended modules db.[collectionName].update(query);
