@@ -27,11 +27,10 @@ const done = () => {
 };
 
 program
-  .usage('[options] <file ...>')
+  .usage('<file ...>')
   .version(` NeDB: ${pkg.dependencies.nedb} \n NeDB-Shell: ${pkg.version}`);
 
 program
-  .arguments('<file>')
   .action(function (file) {
     co(function *() {
       
@@ -44,8 +43,8 @@ program
       
       console.log(chalk.blue(`Datastore chosen: ${chalk.white(input)}, in ${chalk.white(file)}.`));
   
-      console.log(`NeDB Shell: ${new Date()}
-Hello Travis`)
+      console.log(chalk.blue(`NeDB Shell: ${new Date()}
+Hello Travis`));
       // -----------------------------------------------------
       
       // Once all necessary data has been gathered launch node
