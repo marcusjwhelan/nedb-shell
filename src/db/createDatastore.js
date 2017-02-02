@@ -5,7 +5,7 @@ const chalk = require('chalk'),
 
 const _new = (query) => {
   let q = query;
-  q.filename = `${path.prop}/${query.filename}`;
+  q.filename = `${path.prop}/${query.filename}.db`;
   let db = new Datastore(q);
   db.loadDatabase(function (err) {
     if(err) {
