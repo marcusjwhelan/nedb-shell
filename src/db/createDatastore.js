@@ -1,6 +1,5 @@
 'use strict';
-const db = require('./db'),
-      chalk = require('chalk'),
+const chalk = require('chalk'),
       path = require('./path'),
       Datastore = require('nedb');
 
