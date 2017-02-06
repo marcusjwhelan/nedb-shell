@@ -1,8 +1,9 @@
 'use strict';
 
-const gulp = require('gulp'),
+const gulp        = require('gulp'),
       runSequence = require('run-sequence'),
-      spawn = require('child_process').spawn;
+      clean       = require('gulp-clean'),
+      spawn       = require('child_process').spawn;
 
 const runSpawn = function(done, task, opt_arg, opt_io) {
   opt_arg = typeof opt_arg !== 'undefined' ? opt_arg : [];
@@ -27,6 +28,11 @@ const runSpawn = function(done, task, opt_arg, opt_io) {
   });
 };
 
+gulp.task('clean', function () {
+  return gulp.src('built', {read: false})
+             .pipe(clean());
+});
+
 gulp.task('tsc', function(done) {
   runSpawn(done, 'node', ['node_modules/typescript/bin/tsc']);
 });
@@ -41,7 +47,7 @@ gulp.task('built:copy', function () {
 });
 
 gulp.task('prepublish', function (done) {
-  runSequence('tsc', 'built:copy', done);
+  runSequence('clean','tsc', 'built:copy', done);
 });
 
 gulp.task('w', function (done) {
