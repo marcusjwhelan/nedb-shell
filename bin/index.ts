@@ -1,11 +1,13 @@
 'use strict';
 
-import { path } from './path';
+import { path } from './singletons/path';
+import { stores } from './singletons/datastores';
 
-const co      = require('co'),
-  chalk = require('chalk'),
-  program = require('commander'),
-  pkg     = require('../package.json');
+const co    = require('co'),
+  fs        = require('fs'),
+  chalk     = require('chalk'),
+  program   = require('commander'),
+  pkg       = require('../package.json');
 
 // Start Nodejs REPL + Load nedb-shell module
 const launch = () => {
@@ -20,18 +22,31 @@ const launch = () => {
   }
 };
 
+const loadDatastores = (dir: string) => {
+  fs.readdir(dir, (err: any, directories: any) =>{
+    try {
+      for( dir of directories){
+        console.log(dir);
+        //stores.addStore(dir);
+      }
+    }
+  })
+};
+
 program
-.usage('<Datastore directory path...>')
+.usage(`'Path to your NeDB database'
+
+  Example Path: '../~/databaseName'`)
 .version(` NeDB: ${pkg.dependencies.nedb} \n NeDB-Shell: ${pkg.version}`);
 
 program
 .action(function (directory: any) {
   co(function *(): Iterable<string> {
 
-    console.log(directory);
     path.prop = directory;
 
-    console.log(`This is from the class ${path.prop}`);
+    loadDatastores(directory);
+
     console.log(chalk.blue(`NeDB Shell: ${new Date()}`));
 
     launch();
