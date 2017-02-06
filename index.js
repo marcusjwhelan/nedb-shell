@@ -1,2 +1,3 @@
 #!/usr/bin/env node --harmony
-require('./src');
+
+require('./built');
