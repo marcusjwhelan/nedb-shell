@@ -1,5 +1,7 @@
 'use strict';
 
+import { path } from './path';
+
 const co      = require('co'),
   chalk = require('chalk'),
   program = require('commander'),
@@ -13,7 +15,7 @@ const launch = () => {
     ignoreUndefined: true
   });
 
-  for (let nedb_shell of ['yep']) {
+  for (let nedb_shell of ['show','db']) {
     repl.context[nedb_shell] = require(`./${nedb_shell}`);
   }
 };
@@ -27,7 +29,9 @@ program
   co(function *(): Iterable<string> {
 
     console.log(directory);
+    path.prop = directory;
 
+    console.log(`This is from the class ${path.prop}`);
     console.log(chalk.blue(`NeDB Shell: ${new Date()}`));
 
     launch();
