@@ -46,3 +46,6 @@ jspm_packages
 **/.idea/workspace.xml
 **/.idea/modules.xml
 **/.idea/vcs.xml
+
+# Built
+built/
