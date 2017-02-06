@@ -31,13 +31,21 @@ gulp.task('tsc', function(done) {
   runSpawn(done, 'node', ['node_modules/typescript/bin/tsc']);
 });
 
-gulp.task('built:copy', function (done) {
+gulp.task('tsc:w', function(done) {
+  runSpawn(done, 'node', ['node_modules/typescript/bin/tsc', '-w']);
+});
+
+gulp.task('built:copy', function () {
   return gulp.src(['lib/**/*.js'])
     .pipe(gulp.dest('built/'));
 });
 
 gulp.task('prepublish', function (done) {
   runSequence('tsc', 'built:copy', done);
+});
+
+gulp.task('w', function (done) {
+  runSequence('tsc:w', 'built:copy', done);
 });
 
 gulp.task('default', ['prepublish']);

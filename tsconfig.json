@@ -6,7 +6,13 @@
     "declaration": true,
     "noImplicitAny": true,
     "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "noEmitOnError": true,
+    "experimentalDecorators": true,
     "outDir": "built/",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "types": [
       "chalk", "node", "commander"
     ],

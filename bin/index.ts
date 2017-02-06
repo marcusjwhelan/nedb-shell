@@ -1,13 +1,12 @@
 'use strict';
-const co      = require('co'),
-  program = require('commander'),
-  pkg     = require('../package.json'),
-  fs      = require('fs'),
-  chalk   = require('chalk');
 
+const co      = require('co'),
+  chalk = require('chalk'),
+  program = require('commander'),
+  pkg     = require('../package.json');
 
 // Start Nodejs REPL + Load nedb-shell module
-const done = () => {
+const launch = () => {
   const repl = require('repl').start({
     prompt: chalk.green('> '),
     useGlobal: true,
@@ -18,7 +17,6 @@ const done = () => {
     repl.context[nedb_shell] = require(`./${nedb_shell}`);
   }
 };
-
 
 program
 .usage('<Datastore directory path...>')
@@ -32,7 +30,7 @@ program
 
     console.log(chalk.blue(`NeDB Shell: ${new Date()}`));
 
-    done();
+    launch();
   })
 })
 .parse(process.argv);
