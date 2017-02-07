@@ -1,1 +1,1 @@
-// db.datastore.help()  =  mongo db.collection.help()
+// db.help()  =  mongo db.help()

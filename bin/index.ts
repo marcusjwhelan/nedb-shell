@@ -17,7 +17,7 @@ const launch = () => {
     ignoreUndefined: true
   });
 
-  for (let nedb_shell of ['show','db']) {
+  for (let nedb_shell of ['db', 'help', 'show']) {
     repl.context[nedb_shell] = require(`./${nedb_shell}`);
   }
 };
@@ -31,6 +31,7 @@ const loadDatastores = (dir: string) => {
       }
     } catch(e){
       console.log(e);
+      console.log(`No Datastores in directory: ${dir}`);
     }
   });
 };
