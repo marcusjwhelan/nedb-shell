@@ -1,3 +1,6 @@
+// show.dst()  =  mongo show collections
+
+/*
 import { path } from '../singletons/path';
 
 
@@ -8,3 +11,4 @@ export function show(){
 export function change(d: string){
   path.prop = d;
 }
+*/

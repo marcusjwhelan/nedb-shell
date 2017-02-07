@@ -29,8 +29,10 @@ const loadDatastores = (dir: string) => {
         console.log(dir);
         //stores.addStore(dir);
       }
+    } catch(e){
+      console.log(e);
     }
-  })
+  });
 };
 
 program

@@ -1,3 +1,6 @@
+
+
+/*
 import { path } from '../singletons/path';
 
 
@@ -8,3 +11,4 @@ export function db(){
 export function change(d: string){
   path.prop = d;
 }
+*/
