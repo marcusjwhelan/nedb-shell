@@ -1,7 +1,10 @@
 'use strict';
 
-import { path } from './singletons/path';
-import { stores } from './singletons/datastores';
+import { PATH } from './singletons/path';
+import { DATASTORES } from './singletons/datastores';
+
+const path    = PATH.getInstance();
+const stores  = DATASTORES.getInstance();
 
 const co    = require('co'),
   fs        = require('fs'),
@@ -45,6 +48,7 @@ program
 program
 .action(function (directory: any) {
   co(function *(): Iterable<string> {
+
 
     path.prop = directory;
 
