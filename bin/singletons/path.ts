@@ -2,11 +2,7 @@
 // import { path } from 'this path';
 
 export class PATH {
-  private _path: string;
-
-  constructor(){
-    this._path = '';
-  }
+  private _path: string = '';
 
   get prop(): string{
     return this._path;

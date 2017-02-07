@@ -4,11 +4,7 @@ import { Editable } from '../decorators/factories/editable';
 // import { stores } from 'this path';
 
 export class DATASTORES {
-  private _stores: Array<string>;
-
-  constructor(){
-    this._stores = [];
-  }
+  private _stores: Array<string> = [];
 
   get prop(): Array<string>{
     return this._stores;
