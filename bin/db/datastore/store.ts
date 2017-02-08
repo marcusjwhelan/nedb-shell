@@ -7,7 +7,15 @@
  *  db.users.find(query).
  * */
 
-export class Store {
+import * as Nedb from 'nedb';
 
+
+export class Store extends Nedb{
+  constructor(file: string){
+    super({
+      filename: file,
+      autoload: true
+    })
+  }
 }
 
