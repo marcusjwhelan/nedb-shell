@@ -1,4 +1,4 @@
-import { DS } from '../db';
+/*import { DS } from '../db';
 import { Store } from './store';
 import * as fs from 'fs'
 import * as path from 'path';
@@ -12,4 +12,4 @@ export function LoadDataStores(){
 
     DS[name] = new Store(file);
   })
-}
+}*/
