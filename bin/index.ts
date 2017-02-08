@@ -1,62 +1,49 @@
-'use strict';
+import * as chalk from 'chalk';
+import * as program from 'commander';
+import { PATH } from './singletons/path';
+import { DATASTORES } from './singletons/datastores';
+import * as fs from 'fs';
+import { Load } from './Load';
+import * as db from './db';
+import { Store } from './db/datastore/store';
+import { DataStore } from './db/interfaces';
+import ErrnoException = NodeJS.ErrnoException;
+import { repl } from './repl';
 
-import { path } from './singletons/path';
-import { stores } from './singletons/datastores';
+const database = PATH.getInstance();
+const stores  = DATASTORES.getInstance();
 
 const co    = require('co'),
-  fs        = require('fs'),
-  chalk     = require('chalk'),
-  program   = require('commander'),
   pkg       = require('../package.json');
 
-// Start Nodejs REPL + Load nedb-shell module
-const launch = () => {
-  const repl = require('repl').start({
-    prompt: chalk.green('> '),
-    useGlobal: true,
-    ignoreUndefined: true
-  });
 
-  for (let nedb_shell of ['db', 'help', 'show']) {
-    repl.context[nedb_shell] = require(`./${nedb_shell}`);
-  }
-};
 
-const loadDatastores = (dir: string) => {
-  fs.readdir(dir, (err: any, directories: any) =>{
-    try {
-      for( dir of directories){
-        console.log(dir);
-        //stores.addStore(dir);
-      }
+export const LoadDatastores = () => {
+  database.prop = process.cwd();
+  fs.readdir(process.cwd(), (err: ErrnoException, dir:string[]) => {
+    try{
+      dir.forEach((coll:string)=> {
+        //console.log(coll);
+        const name = coll.split('.')[0];
+        //const file = path.join(process.cwd(), coll);
+        let q:DataStore = {};
+        q.filename = coll;
+        q.autoload = true;
+        db[name] = new Store(q);
+      });
     } catch(e){
       console.log(e);
-      console.log(`No Datastores in directory: ${dir}`);
+      console.log(`No Datastores in directory: ${process.cwd()}`);
     }
+
   });
 };
 
 program
-.usage(`'Path to your NeDB database'
+  .version(` NeDB: ${pkg.dependencies.nedb} \n NeDB-Shell: ${pkg.version}`)
+  .parse(process.argv);
 
-  Example Path: '../~/databaseName'`)
-.version(` NeDB: ${pkg.dependencies.nedb} \n NeDB-Shell: ${pkg.version}`);
 
-program
-.action(function (directory: any) {
-  co(function *(): Iterable<string> {
-
-    path.prop = directory;
-
-    loadDatastores(directory);
-
-    console.log(chalk.blue(`NeDB Shell: ${new Date()}`));
-
-    launch();
-  })
-})
-.parse(process.argv);
-
-if (!process.argv.slice(2).length) {
-  program.outputHelp((txt: any) => chalk.red(txt));
-}
+LoadDatastores();
+console.log(chalk.blue(`NeDB Shell: ${new Date()}`));
+Load(repl);

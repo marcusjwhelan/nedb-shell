@@ -1,14 +1,8 @@
+import { createDatastore } from './createDatastore';
 
+const db:any = {
 
-/*
-import { path } from '../singletons/path';
+  createDatastore
+};
 
-
-export function db(){
-  console.log(path.prop)
-}
-
-export function change(d: string){
-  path.prop = d;
-}
-*/
+export = db;

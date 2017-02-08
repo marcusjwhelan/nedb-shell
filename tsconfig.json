@@ -9,12 +9,13 @@
     "emitDecoratorMetadata": true,
     "noEmitOnError": true,
     "experimentalDecorators": true,
+    "baseUrl": "./",
     "outDir": "built/",
     "typeRoots": [
       "node_modules/@types"
     ],
     "types": [
-      "chalk", "node", "commander"
+      "chalk", "commander", "nedb", "node"
     ],
     "lib": ["es6"]
   },
