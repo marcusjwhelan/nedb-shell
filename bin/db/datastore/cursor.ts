@@ -1,40 +1,42 @@
 
 import * as NeDBDataStore from "nedb";
 import NeDB = NeDBDataStore;
-export class Cursor{
-  private cursor: any;
+
+export class Cursor extends NeDB{
+  private cursor: Cursor;
   private _sort: {} = null;
   private _skip: number = 0;
   private _limit: number = 20;
 
   constructor(cursor: any){
+    super();
     this.cursor = cursor;
   }
 
-  sort(obj: {}): Cursor{
+  Sort(obj: {}): Cursor{
     this._sort = obj;
     return this;
   }
 
-  skip(n: number): Cursor {
+  Skip(n: number): Cursor{
     this._skip = n;
     return this;
-  }
+  };
 
-  limit(n: number): Cursor {
+  Limit(n: number): Cursor {
     this._limit = n;
     return this;
   }
 
-  exec(cb: any) {
+  Exec(cb: any) {
     this.cursor
-    .skip(this._skip)
-    .limit(this._limit);
+    .Skip(this._skip)
+    .Limit(this._limit);
 
-    if(this._sort) this.cursor.sort(this._sort);
+    if(this._sort) this.cursor.Sort(this._sort);
 
-    cb ? this.cursor.exec(cb) :
-      this.cursor.exec(function (results: any) {
+    cb ? this.cursor.Exec(cb) :
+      this.cursor.Exec(function (results: any) {
         console.log(JSON.stringify(results, null, 2));
       });
   }

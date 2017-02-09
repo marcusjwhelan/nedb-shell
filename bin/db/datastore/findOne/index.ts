@@ -1,1 +1,1 @@
-// db.datastore.findOne(query)  =  mongo db.collection.findOne(query)
+export { printFindOne } from './findOne';

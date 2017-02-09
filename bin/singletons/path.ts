@@ -1,5 +1,5 @@
 
-import { Editable } from '../decorators/factories/editable';
+import { Editable } from '../decorators';
 
 export class PATH {
   private static instance: PATH;
