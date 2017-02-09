@@ -23,13 +23,15 @@ export const LoadDatastores = () => {
   fs.readdir(process.cwd(), (err: ErrnoException, dir:string[]) => {
     try{
       dir.forEach((coll:string)=> {
-        //console.log(coll);
-        const name = coll.split('.')[0];
-        //const file = path.join(process.cwd(), coll);
+        let name;
         let q:DataStore = {};
-        q.filename = coll;
-        q.autoload = true;
-        db[name] = new Store(q);
+        let file = coll.split('.');
+        if(file[1] === 'db'){
+          name = file[0];
+          q.filename = coll;
+          q.autoload = true;
+          db[name] = new Store(q);
+        }
       });
     } catch(e){
       console.log(e);

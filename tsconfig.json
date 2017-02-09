@@ -9,7 +9,6 @@
     "emitDecoratorMetadata": true,
     "noEmitOnError": true,
     "experimentalDecorators": true,
-    "baseUrl": "./",
     "outDir": "built/",
     "typeRoots": [
       "node_modules/@types"

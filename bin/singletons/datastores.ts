@@ -1,4 +1,4 @@
-import { Editable } from '../decorators/factories/editable';
+import { Editable } from '../decorators';
 
 export class DATASTORES {
   private static instance: DATASTORES;

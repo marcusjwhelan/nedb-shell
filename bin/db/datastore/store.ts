@@ -1,9 +1,14 @@
 // A constructor for a Store = mongodb collection.
 
-import * as Nedb from 'nedb';
 import { DataStore } from '../interfaces';
+import NeDB = NeDBDataStore;
+import * as NeDBDataStore from "nedb";
 
-export class Store extends Nedb{
+import { printInsert , noPrintInsert } from './insert';
+import { printFind } from './find';
+import { printFindOne } from './findOne';
+
+export class Store extends NeDBDataStore{
   constructor(query: DataStore){
     super({
       filename: query.filename,
@@ -14,7 +19,14 @@ export class Store extends Nedb{
       afterSerialization: query.afterSerialization,
       beforeDeserialization: query.beforeDeserialization,
       corruptAlertThreshold: query.corruptAlertThreshold
-    })
+    });
   }
+
+  Insert = printInsert;
+  __insert = noPrintInsert; // Use internally
+
+  FindOne = printFindOne;
+
+  Find = printFind;
 }
 
