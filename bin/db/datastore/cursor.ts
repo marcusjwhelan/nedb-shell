@@ -1,3 +1,6 @@
+
+import * as NeDBDataStore from "nedb";
+import NeDB = NeDBDataStore;
 export class Cursor{
   private cursor: any;
   private _sort: {} = null;
@@ -23,7 +26,7 @@ export class Cursor{
     return this;
   }
 
-  exec(cb: {}) {
+  exec(cb: any) {
     this.cursor
     .skip(this._skip)
     .limit(this._limit);

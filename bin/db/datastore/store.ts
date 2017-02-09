@@ -4,7 +4,7 @@ import { DataStore } from '../interfaces';
 import NeDB = NeDBDataStore;
 import * as NeDBDataStore from "nedb";
 
-import { insert, GenericInsert } from './insert';
+import { printInsert , noPrintInsert } from './insert';
 
 export class Store extends NeDBDataStore{
   constructor(query: DataStore){
@@ -19,14 +19,9 @@ export class Store extends NeDBDataStore{
       corruptAlertThreshold: query.corruptAlertThreshold
     });
 
-    this.insert = insert;
-    /*this.find = find;
-    this.findOne = findOne;
-    this.update = update;
-    this.count = count;
-    this.remove = remove;*/
-
-
   };
+
+  Insert = printInsert;
+  __insert = noPrintInsert; // Use internally
 }
 
