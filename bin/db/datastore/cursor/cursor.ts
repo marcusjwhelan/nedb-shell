@@ -2,7 +2,7 @@
 import * as NeDBDataStore from "nedb";
 import NeDB = NeDBDataStore;
 
-import { _Sort, _Skip, _Limit, _Exec} from './index';
+import { _Sort, _Skip, _Limit, _Exec, _Count } from './index';
 
 export class Cursor{
   private cursor: Cursor;
@@ -16,5 +16,6 @@ export class Cursor{
   sort = _Sort;
   skip = _Skip;
   limit = _Limit;
+  count = _Count;
   exec = _Exec;
 }
