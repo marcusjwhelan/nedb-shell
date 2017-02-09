@@ -1,7 +1,6 @@
 import * as chalk from 'chalk';
 
-export function _Exec(cb?:any):any{
-  let returnObj: any[] = [];
+export function _Exec(cb?:any){
   if(this._sort) this.cursor.sort(this._sort);
 
   if(cb){
@@ -18,12 +17,7 @@ export function _Exec(cb?:any):any{
             console.log(chalk.red(`${err}, \n An error occurred while trying to use the exec cursor function`));
           } else {
             console.log(JSON.stringify(docs,null,2));
-            docs.forEach(function ( doc ) {
-              returnObj.push(doc);
-            })
           }
-
         })
   }
-  return returnObj;
 }
