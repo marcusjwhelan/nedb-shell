@@ -5,8 +5,8 @@ import NeDB = NeDBDataStore;
 import * as NeDBDataStore from "nedb";
 
 import { printInsert , noPrintInsert } from './insert';
+import { printFind } from './find';
 import { printFindOne } from './findOne';
-import { Cursor } from './cursor';
 
 export class Store extends NeDBDataStore{
   constructor(query: DataStore){
@@ -20,11 +20,13 @@ export class Store extends NeDBDataStore{
       beforeDeserialization: query.beforeDeserialization,
       corruptAlertThreshold: query.corruptAlertThreshold
     });
-  };
+  }
 
   Insert = printInsert;
   __insert = noPrintInsert; // Use internally
 
   FindOne = printFindOne;
+
+  Find = printFind;
 }
 
