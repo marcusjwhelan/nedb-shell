@@ -4,10 +4,11 @@ import { DataStore } from '../interfaces';
 import NeDB = NeDBDataStore;
 import * as NeDBDataStore from "nedb";
 
-import { printInsert , noPrintInsert } from './insert';
-import { printFind } from './find';
-import { printFindOne } from './findOne';
-import { printCount } from './count';
+import {
+  printInsert, noPrintInsert,
+  printFindOne, printFind, printCount,
+  updateDocs
+} from '../datastore';
 
 export class Store extends NeDBDataStore{
   constructor(query: DataStore){
@@ -29,6 +30,8 @@ export class Store extends NeDBDataStore{
   FindOne = printFindOne;
 
   Find = printFind;
+
+  Update = updateDocs;
 
   Count = printCount;
 }

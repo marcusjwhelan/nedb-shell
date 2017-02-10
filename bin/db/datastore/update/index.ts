@@ -1,1 +1,1 @@
-// db.datastore.update(query) = mongo db.collection.update(query)
+export { updateDocs } from './update';
