@@ -1,1 +1,2 @@
-// db.datastore.count()  =  mongo db.collection.count()
+
+export { printCount } from './count';

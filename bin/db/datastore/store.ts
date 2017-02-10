@@ -7,6 +7,7 @@ import * as NeDBDataStore from "nedb";
 import { printInsert , noPrintInsert } from './insert';
 import { printFind } from './find';
 import { printFindOne } from './findOne';
+import { printCount } from './count';
 
 export class Store extends NeDBDataStore{
   constructor(query: DataStore){
@@ -28,5 +29,7 @@ export class Store extends NeDBDataStore{
   FindOne = printFindOne;
 
   Find = printFind;
+
+  Count = printCount;
 }
 

@@ -7,8 +7,5 @@ const findOneCB = function (err:Error, doc:string):void {
 };
 
 export function printFindOne(query:{}, projection?: {}, cb?: any):void{
-  if(arguments.length < 2){
-    projection = {};
-  }
   this.findOne(query, projection, (cb?cb:findOneCB));
 }
