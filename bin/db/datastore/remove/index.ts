@@ -1,1 +1,1 @@
-// db.datastore.remove(query)  =  mongo db.collection.remove(query)
+export { removeDocs } from './remove';
