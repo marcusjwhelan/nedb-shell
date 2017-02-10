@@ -5,3 +5,4 @@ export { printFind } from './find';
 export { printFindOne } from './findOne';
 export { noPrintInsert, printInsert} from './insert';
 export { updateDocs, updateManyDocs } from './update';
+export { removeDocs } from './remove';

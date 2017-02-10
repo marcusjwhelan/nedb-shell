@@ -7,7 +7,7 @@ import * as NeDBDataStore from "nedb";
 import {
   printInsert, noPrintInsert,
   printFindOne, printFind, printCount,
-  updateDocs, updateManyDocs
+  updateDocs, updateManyDocs, removeDocs
 } from '../datastore';
 
 export class Store extends NeDBDataStore{
@@ -17,7 +17,7 @@ export class Store extends NeDBDataStore{
       inMemoryOnly: query.inMemoryOnly,
       autoload: query.autoload,
       onload: query.onload,
-     // nodeWebkitAppName: query.nodeWebkitAppName, jack wagon can make a types file
+
       afterSerialization: query.afterSerialization,
       beforeDeserialization: query.beforeDeserialization,
       corruptAlertThreshold: query.corruptAlertThreshold
@@ -33,6 +33,8 @@ export class Store extends NeDBDataStore{
 
   Update = updateDocs;
   UpdateMany = updateManyDocs;
+
+  Remove = removeDocs;
 
   Count = printCount;
 }
