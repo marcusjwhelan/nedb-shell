@@ -23,6 +23,6 @@ export function autoReply( err:Error, numAffected:number, affectedDocuments?:ups
       }
       replyObject.upsert = false;
     }
-    console.log(`${replyObject}`);
+    console.log(replyObject);
   }
 }

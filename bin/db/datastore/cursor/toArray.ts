@@ -1,7 +1,7 @@
 import * as chalk from 'chalk';
 
-export function _toArray():any{
-  let returnArray: any[] = [];
+export function _toArray():{}[]{
+  let returnArray: {}[] = [];
   if(this._sort) this.cursor.sort(this._sort);
 
   this.cursor
