@@ -8,9 +8,9 @@ export function _Pretty(){
       .limit(this._limit)
       .exec(function ( err:Error, docs:{}[] ) {
         if(err){
-          console.log(chalk.red(`${err}, \n An error occurred while trying to use the pretty cursor function`));
+          console.log(chalk.red(`${err}, \nAn error occurred while trying to use the pretty cursor function`));
         } else {
-          console.log(JSON.stringify(docs,null,2));
+          console.log(`${JSON.stringify(docs,null,2)}`);
         }
       })
 }

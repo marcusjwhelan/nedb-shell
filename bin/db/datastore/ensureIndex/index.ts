@@ -1,0 +1,1 @@
+export { ensureDocIndex } from './ensureIndex';

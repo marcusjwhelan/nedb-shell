@@ -7,7 +7,8 @@ import * as NeDBDataStore from "nedb";
 import {
   printInsert, noPrintInsert,
   printFindOne, printFind, printCount,
-  updateDocs, updateManyDocs, removeDocs
+  updateDocs, updateManyDocs, removeDocs,
+  ensureDocIndex, removeDocIndex,
 } from '../datastore';
 
 export class Store extends NeDBDataStore{
@@ -35,6 +36,9 @@ export class Store extends NeDBDataStore{
   UpdateMany = updateManyDocs;
 
   Remove = removeDocs;
+
+  EnsureIndex = ensureDocIndex;
+  RemoveIndex = removeDocIndex;
 
   Count = printCount;
 }
