@@ -13,7 +13,7 @@ const autoReply = function ( err:Error, numAffected:number, affectedDocuments?:a
     replyObject.changed = numAffected;
     replyObject.affectedDocument = {};
     replyObject.affectedDocuments = [];
-    if(affectedDocuments.length > 1){
+    if(Array.isArray(affectedDocuments)){
       affectedDocuments.forEach(function(doc:upsertedDocument){
         replyObject.affectedDocuments.push(doc._id);
       });
