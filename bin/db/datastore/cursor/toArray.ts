@@ -9,7 +9,7 @@ export function _toArray():any{
       .limit(this._limit)
       .exec(function ( err:Error, docs:{}[] ) {
         if(err){
-          console.log(chalk.red(`${err}, \n An error occurred while trying to use the toArray cursor function`));
+          console.log(chalk.red(`${err}, \nAn error occurred while trying to use the toArray cursor function`));
         } else {
           docs.forEach(function ( doc ) {
             returnArray.push(doc);

@@ -6,3 +6,5 @@ export { printFindOne } from './findOne';
 export { noPrintInsert, printInsert} from './insert';
 export { updateDocs, updateManyDocs } from './update';
 export { removeDocs } from './remove';
+export { ensureDocIndex } from './ensureIndex';
+export { removeDocIndex } from './removeIndex';
