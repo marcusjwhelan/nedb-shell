@@ -1,4 +1,4 @@
-// db.datastore.findOne(query)  =  mongo db.collection.findOne(query)
+
 import * as chalk from 'chalk';
 
 const findOneCB = function (err:Error, doc:string):void {
