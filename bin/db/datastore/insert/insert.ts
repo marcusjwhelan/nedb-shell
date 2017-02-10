@@ -4,7 +4,7 @@ const insertCB = function (err:Error, doc:any) {
   if(err){
     console.log(chalk.red(`${err}`));
   } else {
-    console.log(`${JSON.stringify(doc, null, 2)}`);
+    console.log(JSON.stringify(doc, null, 2));
   }
 };
 

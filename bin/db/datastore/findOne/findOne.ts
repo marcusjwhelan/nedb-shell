@@ -5,7 +5,7 @@ const findOneCB = function (err:Error, doc:string):void {
   if(err) {
     console.log(chalk.red(`${err}`));
   } else {
-    console.log(`${JSON.stringify(doc, null, 2)}`);
+    console.log(JSON.stringify(doc, null, 2));
   }
 };
 

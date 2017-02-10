@@ -6,7 +6,7 @@ export function _Count(){
     if(err){
       console.log(chalk.red(`${err}`));
     } else {
-      console.log(`${chalk.yellow(docs.length+'')}`);
+      console.log(chalk.yellow(docs.length+''));
     }
   });
 }

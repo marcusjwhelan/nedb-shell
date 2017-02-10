@@ -8,7 +8,7 @@ const removeCB = function ( err:Error, numRemoved:number) {
     console.log(chalk.red(`${err}`));
   } else {
     returnObj.removed = numRemoved;
-    console.log(`${returnObj}`);
+    console.log(returnObj);
   }
 };
 

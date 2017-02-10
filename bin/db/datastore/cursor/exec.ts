@@ -16,7 +16,7 @@ export function _Exec(cb?:any){
           if(err){
             console.log(chalk.red(`${err}, \nAn error occurred while trying to use the exec cursor function`));
           } else {
-            console.log(`${JSON.stringify(docs,null,2)}`);
+            console.log(JSON.stringify(docs, null, 2));
           }
         })
   }

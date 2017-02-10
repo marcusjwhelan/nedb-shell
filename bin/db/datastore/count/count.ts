@@ -5,7 +5,7 @@ const countCB = function ( err:Error, count:string ):void {
   if(err) {
     console.log(chalk.red(`${err}`));
   } else {
-    console.log(`${chalk.yellow(count)}`);
+    console.log(chalk.yellow(count));
   }
 };
 
