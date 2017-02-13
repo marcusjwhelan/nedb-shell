@@ -17,7 +17,7 @@ npm install -g nedb-shell
 
 To begin using NeDB-Shell you will need to navigate to your persistent database directory. If you do not have one yet and would like to create one it would be best to place your directory in AppData on Windows and for mac [ need to find a good spot ].
 
-Once at your database location simple
+Once at your database location simply
 ```bash
 > nedb-shell
 ```
