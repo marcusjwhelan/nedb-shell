@@ -9,6 +9,6 @@ const countCB = function ( err:Error, count:string ):void {
   }
 };
 
-export function printCount(){
-  this.count({},countCB);
+export function printCount(query:{}){
+  this.count(query,countCB);
 }

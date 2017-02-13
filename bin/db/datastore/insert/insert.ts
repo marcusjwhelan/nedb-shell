@@ -8,6 +8,6 @@ const insertCB = function (err:Error, doc:any) {
   }
 };
 
-export function printInsert(newDoc:{}):void{
-  this.insert(newDoc, insertCB);
+export function printInsert(newDoc:{}, cb?:any):void{
+  this.insert(newDoc, (cb?cb:insertCB));
 }
