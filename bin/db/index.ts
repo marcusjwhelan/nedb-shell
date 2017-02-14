@@ -1,7 +1,9 @@
 import { createDatastore } from './createDatastore';
+import { show } from './show';
 
 const db:any = {
-  createDatastore
+  createDatastore,
+  show
 };
 
 export = db;

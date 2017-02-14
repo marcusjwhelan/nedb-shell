@@ -1,7 +1,7 @@
 import * as chalk from 'chalk';
 import * as program from 'commander';
-import { PATH } from './singletons/path';
-import { DATASTORES } from './singletons/datastores';
+import { PATH } from './singletons';
+import { DATASTORES } from './singletons';
 import * as fs from 'fs';
 import { Load } from './Load';
 import * as db from './db';
@@ -9,16 +9,16 @@ import { Store } from './db/datastore/store';
 import { DataStore } from './db/interfaces';
 import ErrnoException = NodeJS.ErrnoException;
 import { repl } from './repl';
+const pkg = require('../package.json');
 
 const database = PATH.getInstance();
 const stores  = DATASTORES.getInstance();
 
-const co    = require('co'),
-  pkg       = require('../package.json');
+export const getDB = ():any => {
+  return db;
+};
 
-
-
-export const LoadDatastores = () => {
+export const LoadDatastores = ():void => {
   database.prop = process.cwd();
   fs.readdir(process.cwd(), (err: ErrnoException, dir:string[]) => {
     try{
@@ -30,6 +30,8 @@ export const LoadDatastores = () => {
           name = file[0];
           q.filename = coll;
           q.autoload = true;
+
+          stores.addStore(name);
           db[name] = new Store(q);
         }
       });

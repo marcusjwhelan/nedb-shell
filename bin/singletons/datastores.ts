@@ -25,5 +25,11 @@ export class DATASTORES {
   addStores(stores: Array<string>){
     this._stores.push(...stores);
   }
+
+  @Editable(false)
+  dropStore(store: string){
+    let index:number = this._stores.indexOf(store);
+    this._stores.splice(index,1);
+  }
 }
 
