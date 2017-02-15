@@ -1,4 +1,4 @@
-import { requiredDatastore } from './interfaces';
+import { requiredDatastore } from '../../interfaces';
 import { DATASTORES } from '../../../singletons';
 import * as fs from 'fs';
 import * as chalk from 'chalk';

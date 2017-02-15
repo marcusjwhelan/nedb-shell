@@ -10,3 +10,4 @@ export { ensureDocIndex } from './ensureIndex';
 export { removeDocIndex } from './removeIndex';
 export { Drop } from './drop';
 export { InsertMany } from './insertMany';
+export { FindOneAndUpdate } from './findOneAndUpdate';
