@@ -42,6 +42,7 @@ This will open up a NodeJs shell with this NeDB wrapper module to work in the sh
 * <a href="#removing-documents">Removing documents</a>
 * <a href="#indexing">Indexing</a>
 * <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
+* <a href="#additional">Additional</a>
 
 ### Creating/loading a database
 This shell is meant for persistent datastores only. All the operations work on files that are saved to your local machine to persist the database. For reference of the options available to [NeDB](https://github.com/louischatriot/nedb) please refer to the [README](https://github.com/louischatriot/nedb/blob/master/README.md#creatingloading-a-database). To use NeDB-Shell's create a new datastore in your database directory.
@@ -211,4 +212,13 @@ db.[name].FindOneAndUpdate(query,update,updateOptions?,cb?). db.[name].FindOneAn
   upsert: false }
 #
 # However You cannot set multi to true. 
+```
+
+## Additional
+
+db.[name].Drop(). This function does not exist on the NeDB API but is available in the shell. 
+
+```bash
+> db.users.Drop();
+# removes users.db from current directory. Also removes from db object.
 ```
