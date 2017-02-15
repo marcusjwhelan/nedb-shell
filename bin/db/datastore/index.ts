@@ -8,3 +8,4 @@ export { updateDocs, updateManyDocs } from './update';
 export { removeDocs } from './remove';
 export { ensureDocIndex } from './ensureIndex';
 export { removeDocIndex } from './removeIndex';
+export { drop } from './drop';

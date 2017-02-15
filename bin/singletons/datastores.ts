@@ -17,6 +17,11 @@ export class DATASTORES {
   }
 
   @Editable(false)
+  resetStore(){
+    this._stores = [];
+  }
+
+  @Editable(false)
   addStore(store: string){
     this._stores.push(store);
   }

@@ -8,7 +8,7 @@ import {
   printInsert, noPrintInsert,
   printFindOne, printFind, printCount,
   updateDocs, updateManyDocs, removeDocs,
-  ensureDocIndex, removeDocIndex,
+  ensureDocIndex, removeDocIndex, drop
 } from '../datastore';
 
 export class Store extends NeDBDataStore{
@@ -24,22 +24,22 @@ export class Store extends NeDBDataStore{
       corruptAlertThreshold: query.corruptAlertThreshold
     });
   }
-
-  Insert = printInsert;
   __insert = noPrintInsert; // Use internally
 
+  // Lowercase values exist with different functionality
+  Insert = printInsert;
   FindOne = printFindOne;
-
   Find = printFind;
-
   Update = updateDocs;
   UpdateMany = updateManyDocs;
-
   Remove = removeDocs;
-
   EnsureIndex = ensureDocIndex;
   RemoveIndex = removeDocIndex;
-
   Count = printCount;
+  // ----------------------------------------------------
+
+  // Non-existing functionality from NeDB ---------------
+  drop = drop;
+  // ----------------------------------------------------
 }
 
