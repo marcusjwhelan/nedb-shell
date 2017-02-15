@@ -1,0 +1,1 @@
+export { FindOneAndRemove } from './findOneAndRemove';

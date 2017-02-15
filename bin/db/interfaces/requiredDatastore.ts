@@ -8,6 +8,7 @@ export interface requiredDatastore{
   InsertMany: any;
   Find: any;
   FindOneAndUpdate: any;
+  FindOneAndRemove: any;
   FindOne: any;
   Update: any;
   UpdateMany: any;

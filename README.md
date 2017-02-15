@@ -8,12 +8,12 @@ Install [NodeJs 6.9.x](https://nodejs.org/en/)
 Install [NeDB](https://github.com/louischatriot/nedb)
 
 ## Usage
-NeDB-Shell has both the ability to use all the NeDB functions, for example.
+NeDB-Shell has the ability to use all the NeDB functions, for example.
    * db.[name].find().exec(cb);
    * db.[name].insert().exec();
    * db.[name].remove().exec();
 
-However with this package you will have an assortment of new functions on top of the NeDB functions. Check the <a href="#table-of-contents">Table of Contents</a> for all usages.
+And with this package you will have an assortment of new functions on top of the NeDB functions. Check the <a href="#table-of-contents">Table of Contents</a> for all usages.
 
 
 ## Install
@@ -193,9 +193,10 @@ db.users.RemoveIndex(fieldName, cb)
 > Success
 ```
 
+
 # Only On NeDB-Shell
 
-## FindOneAndUpdate/FindOneAndRemove
+### FindOneAndUpdate/FindOneAndRemove
 db.[name].FindOneAndUpdate(query,update,updateOptions?,cb?). db.[name].FindOneAndRemove(query,cb?). Both are not in the NeDB library but can be implemented. To add an extra simplicity these were added for users who would like to circumvent writing more code than needed.
 
 ```bash
@@ -217,8 +218,22 @@ db.[name].FindOneAndUpdate(query,update,updateOptions?,cb?). db.[name].FindOneAn
 #
 # However You cannot set multi to true. 
 ```
+FindOneAndRemove is simply available to view the removed document before hand by using the attribute `show: true` in the second argument. To simply remove just one document use <a href="#removing-documents">removing documents</a>. Remove's default `multi: false` will only remove one document. With FindOneAndRemove you might have an error finding the document and be warned about it. 
+```bash
+db.users.FindOneAndRemove({ firstName: 'John' })
+> { removed: 1 }
+# 
+# with returned document 
+#
+> db.users.FindOneAndRemove({},{ show: true })
+> {
+  "firstName": "John",
+  "lastName": "Doe",
+  "_id": "1234568797894563"
+}
+```
 
-## InsertMany
+### InsertMany
 db.[name].InsertMany(array,cb?). A callback is available and would function on each document in the array. If left blank there is an automatic callback that will log the error and the document it failed on. Great for pasting in an array of objects to insert. 
 ```bash
 > let bushel = [{ name: 'Chris'},{ name: 'Tom' },{ name: 'Mercedes'}];
@@ -233,7 +248,7 @@ success
 success
 ```
 
-## Additional
+### Additional
 db.[name].Drop(). This function does not exist on the NeDB API but is available in the shell. 
 
 ```bash

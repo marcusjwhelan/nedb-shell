@@ -2,7 +2,7 @@
 import * as chalk from 'chalk';
 import { queryOptionsInterface, returnObj} from './interfaces';
 
-const removeCB = function ( err:Error, numRemoved:number) {
+export const removeCB = function ( err:Error, numRemoved:number) {
   const returnObj:returnObj = {removed: 0};
   if(err) {
     console.log(chalk.red(`${err}`));
@@ -12,7 +12,7 @@ const removeCB = function ( err:Error, numRemoved:number) {
   }
 };
 
-export function removeDocs(query: {}, queryOptions: queryOptionsInterface,cb?:any ){
+export function removeDocs(query: {}, queryOptions: queryOptionsInterface,cb?:any ):void{
   if(!queryOptions) queryOptions = {};
   this.remove(query, queryOptions, (cb?cb:removeCB));
 }

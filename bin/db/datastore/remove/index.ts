@@ -1,1 +1,1 @@
-export { removeDocs } from './remove';
+export { removeDocs, removeCB } from './remove';
