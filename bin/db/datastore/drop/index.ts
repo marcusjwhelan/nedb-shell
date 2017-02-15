@@ -1,1 +1,1 @@
-export { drop } from './drop';
+export { Drop } from './drop';

@@ -1,4 +1,4 @@
-import { requiredDatastore } from './interfaces'
+import { requiredDatastore } from '../../interfaces'
 import { getDB } from '../../../index';
 
 export function dropFromObject(store:requiredDatastore){

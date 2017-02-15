@@ -3,12 +3,20 @@ A Mongo like shell for NeDB
 
 ## Pre Install to Use
 
-Install [NodeJs 6.9.](https://nodejs.org/en/) 
+Install [NodeJs 6.9.x](https://nodejs.org/en/) 
 
 Install [NeDB](https://github.com/louischatriot/nedb)
 
 ## Usage
+NeDB-Shell has the ability to use all the NeDB functions, for example.
+   * db.[name].find().exec(cb);
+   * db.[name].insert().exec();
+   * db.[name].remove().exec();
 
+And with this package you will have an assortment of new functions on top of the NeDB functions. Check the <a href="#table-of-contents">Table of Contents</a> for all usages.
+
+
+## Install
 Install 
 
 ```bash
@@ -23,7 +31,7 @@ Once at your database location simply
 ```
 This will open up a NodeJs shell with this NeDB wrapper module to work in the shell. This way you have all the use of NodeJs shell and NeDB pre-loaded with extra features. This includes auto completion for functions using dot notation.
 
-## API Table of Contents
+## Table of Contents
 
 * <a href="#creatingloading-a-database">Creating/loading a database</a>
 * <a href="#inserting-documents">Inserting documents</a>
@@ -33,6 +41,10 @@ This will open up a NodeJs shell with this NeDB wrapper module to work in the sh
 * <a href="#updating-documents">Updating documents</a>
 * <a href="#removing-documents">Removing documents</a>
 * <a href="#indexing">Indexing</a>
+* <a href="#only-on-nedb-shell">Only on NeDB-Shell</a>
+   * <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
+   * <a href="#insertmany">InsertMany</a>
+   * <a href="#additional">Additional</a>
 
 ### Creating/loading a database
 This shell is meant for persistent datastores only. All the operations work on files that are saved to your local machine to persist the database. For reference of the options available to [NeDB](https://github.com/louischatriot/nedb) please refer to the [README](https://github.com/louischatriot/nedb/blob/master/README.md#creatingloading-a-database). To use NeDB-Shell's create a new datastore in your database directory.
@@ -73,6 +85,8 @@ There is no cursor involved with Insert so you cannot return the document to sto
 
 
 ### Finding documents
+db.[name].Find(query, projection?, cb?), db.[name].FindOne(query,projection?,cb?). Below are some example uses for each find function. 
+
 ```bash
 db.users.Find({ firstName: 'John'}) 
 # this will return the Cursor and is not very usefull.
@@ -104,7 +118,8 @@ db.users.FindOne({},function(err,doc){
 ... // document is an object
 ... }
 ```
-Projections are also available on all quering functions except remove and Index.
+These find functions are also all available to be uses as they are shown on NeDB if you use the lowercase syntax of find,findOne. 
+
 
 ### Basic querying
 [NeDB Basic Quering](https://github.com/louischatriot/nedb/blob/master/README.md#basic-querying).
@@ -176,4 +191,67 @@ db.users.RemoveIndex(fieldName, cb)
 # If there is an error or conflict during indexing an error will show up in red.
 > db.users.RemoveIndex('firstName')
 > Success
+```
+
+
+# Only On NeDB-Shell
+
+### FindOneAndUpdate/FindOneAndRemove
+db.[name].FindOneAndUpdate(query,update,updateOptions?,cb?). db.[name].FindOneAndRemove(query,cb?). Both are not in the NeDB library but can be implemented. To add an extra simplicity these were added for users who would like to circumvent writing more code than needed.
+
+```bash
+# To find one document and update that single document in one query
+#                                query                update
+> db.users.FindOneAndUpdate({ firstName: 'John' },{ firstName: 'Max' });
+> { changed: 1,
+  affectedDocument: {},
+  affectedDocuments: [],
+  upsert: false }
+#
+# As you can see you still receive the reply document. If you wish you can set to retrieve the id as well.
+#
+> db.users.FindOneAndUpdate({ firstName: 'John'},{ firstName: 'Max' },{ returnUpdatedDocs: true });
+> { changed: 1,
+  affectedDocument: '1234567899876543',
+  affectedDocuments: [],
+  upsert: false }
+#
+# However You cannot set multi to true. 
+```
+FindOneAndRemove is simply available to view the removed document before hand by using the attribute `show: true` in the second argument. To simply remove just one document use <a href="#removing-documents">removing documents</a>. Remove's default `multi: false` will only remove one document. With FindOneAndRemove you might have an error finding the document and be warned about it. 
+```bash
+db.users.FindOneAndRemove({ firstName: 'John' })
+> { removed: 1 }
+# 
+# with returned document 
+#
+> db.users.FindOneAndRemove({},{ show: true })
+> {
+  "firstName": "John",
+  "lastName": "Doe",
+  "_id": "1234568797894563"
+}
+```
+
+### InsertMany
+db.[name].InsertMany(array,cb?). A callback is available and would function on each document in the array. If left blank there is an automatic callback that will log the error and the document it failed on. Great for pasting in an array of objects to insert. 
+```bash
+> let bushel = [{ name: 'Chris'},{ name: 'Tom' },{ name: 'Mercedes'}];
+> db.users.InsertMany(bushel);
+#
+# If you would like to write your own callback to log every success
+#
+> db.users.InsertMany(bushel,function(err,doc){if(!err){
+... console.log("success")});
+> success
+success
+success
+```
+
+### Additional
+db.[name].Drop(). This function does not exist on the NeDB API but is available in the shell. 
+
+```bash
+> db.users.Drop();
+# removes users.db from current directory. Also removes from db object.
 ```

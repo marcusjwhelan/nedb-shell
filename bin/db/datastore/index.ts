@@ -8,4 +8,7 @@ export { updateDocs, updateManyDocs } from './update';
 export { removeDocs } from './remove';
 export { ensureDocIndex } from './ensureIndex';
 export { removeDocIndex } from './removeIndex';
-export { drop } from './drop';
+export { Drop } from './drop';
+export { InsertMany } from './insertMany';
+export { FindOneAndUpdate } from './findOneAndUpdate';
+export { FindOneAndRemove } from './findOneAndRemove';
