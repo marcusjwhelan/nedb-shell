@@ -42,6 +42,7 @@ This will open up a NodeJs shell with this NeDB wrapper module to work in the sh
 * <a href="#removing-documents">Removing documents</a>
 * <a href="#indexing">Indexing</a>
 * <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
+* <a href="#insertmany">InsertMany</a>
 * <a href="#additional">Additional</a>
 
 ### Creating/loading a database
@@ -214,8 +215,22 @@ db.[name].FindOneAndUpdate(query,update,updateOptions?,cb?). db.[name].FindOneAn
 # However You cannot set multi to true. 
 ```
 
-## Additional
+## InsertMany
+db.[name].InsertMany(array,cb?). A callback is available and would function on each document in the array. If left blank there is an automatic callback that will log the error and the document it failed on. Great for pasting in an array of objects to insert. 
+```bash
+> let bushel = [{ name: 'Chris'},{ name: 'Tom' },{ name: 'Mercedes'}];
+> db.users.InsertMany(bushel);
+#
+# If you would like to write your own callback to log every success
+#
+> db.users.InsertMany(bushel,function(err,doc){if(!err){
+... console.log("success")});
+> success
+success
+success
+```
 
+## Additional
 db.[name].Drop(). This function does not exist on the NeDB API but is available in the shell. 
 
 ```bash

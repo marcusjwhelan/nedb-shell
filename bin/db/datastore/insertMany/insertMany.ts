@@ -1,9 +1,9 @@
 import * as chalk from 'chalk';
 
-const insertManyCB = function ( err:Error, docs:{}[] ) {
+const insertManyCB = function ( err:Error, doc:{} ) {
   if(err){
     console.log(chalk.red(`${err}`));
-    console.log(JSON.stringify(docs,null,2));
+    console.log(JSON.stringify(doc,null,2));
   }
 };
 
