@@ -1,1 +1,1 @@
-// db.datastore.drop()  =  mongo db.collection.drop()
+export { drop } from './drop';
