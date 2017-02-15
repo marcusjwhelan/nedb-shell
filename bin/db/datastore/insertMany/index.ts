@@ -1,0 +1,1 @@
+export { InsertMany } from './insertMany';

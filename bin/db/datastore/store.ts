@@ -8,7 +8,8 @@ import {
   printInsert, noPrintInsert,
   printFindOne, printFind, printCount,
   updateDocs, updateManyDocs, removeDocs,
-  ensureDocIndex, removeDocIndex, drop
+  ensureDocIndex, removeDocIndex, Drop,
+  InsertMany
 } from '../datastore';
 
 export class Store extends NeDBDataStore{
@@ -39,7 +40,8 @@ export class Store extends NeDBDataStore{
   // ----------------------------------------------------
 
   // Non-existing functionality from NeDB ---------------
-  drop = drop;
+  Drop = Drop;
+  InsertMany = InsertMany;
   // ----------------------------------------------------
 }
 
