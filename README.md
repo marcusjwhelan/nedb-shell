@@ -41,7 +41,7 @@ This will open up a NodeJs shell with this NeDB wrapper module to work in the sh
 * <a href="#updating-documents">Updating documents</a>
 * <a href="#removing-documents">Removing documents</a>
 * <a href="#indexing">Indexing</a>
-* <a href="#only-on-nedb-shell"</a>
+* <a href="#only-on-nedb-shell">Only on NeDB-Shell</a>
    * <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
    * <a href="#insertmany">InsertMany</a>
    * <a href="#additional">Additional</a>
