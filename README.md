@@ -41,9 +41,10 @@ This will open up a NodeJs shell with this NeDB wrapper module to work in the sh
 * <a href="#updating-documents">Updating documents</a>
 * <a href="#removing-documents">Removing documents</a>
 * <a href="#indexing">Indexing</a>
-* <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
-* <a href="#insertmany">InsertMany</a>
-* <a href="#additional">Additional</a>
+* <a href="#only-on-nedb-shell"</a>
+   * <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
+   * <a href="#insertmany">InsertMany</a>
+   * <a href="#additional">Additional</a>
 
 ### Creating/loading a database
 This shell is meant for persistent datastores only. All the operations work on files that are saved to your local machine to persist the database. For reference of the options available to [NeDB](https://github.com/louischatriot/nedb) please refer to the [README](https://github.com/louischatriot/nedb/blob/master/README.md#creatingloading-a-database). To use NeDB-Shell's create a new datastore in your database directory.
@@ -191,6 +192,8 @@ db.users.RemoveIndex(fieldName, cb)
 > db.users.RemoveIndex('firstName')
 > Success
 ```
+
+# Only On NeDB-Shell
 
 ## FindOneAndUpdate/FindOneAndRemove
 db.[name].FindOneAndUpdate(query,update,updateOptions?,cb?). db.[name].FindOneAndRemove(query,cb?). Both are not in the NeDB library but can be implemented. To add an extra simplicity these were added for users who would like to circumvent writing more code than needed.
