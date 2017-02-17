@@ -3,7 +3,7 @@ A Mongo like shell for NeDB
 
 ## Pre Install to Use
 
-Install [NodeJs 6.9.x](https://nodejs.org/en/) 
+Install [NodeJs ^6.9.x](https://nodejs.org/en/) 
 
 Install [NeDB](https://github.com/louischatriot/nedb)
 
@@ -23,7 +23,7 @@ Install
 npm install -g nedb-shell
 ```
 
-To begin using NeDB-Shell you will need to navigate to your persistent database directory. If you do not have one yet and would like to create one it would be best to place your directory in AppData on Windows and for mac [ need to find a good spot ].
+To begin using NeDB-Shell you will need to navigate to your persistent database directory. If you do not have one yet and would like to create one it would be best to place your directory in AppData on Windows and for mac root.
 
 Once at your database location simply
 ```bash
@@ -47,21 +47,21 @@ This will open up a NodeJs shell with this NeDB wrapper module to work in the sh
    * <a href="#additional">Additional</a>
 
 ### Creating/loading a database
-This shell is meant for persistent datastores only. All the operations work on files that are saved to your local machine to persist the database. For reference of the options available to [NeDB](https://github.com/louischatriot/nedb) please refer to the [README](https://github.com/louischatriot/nedb/blob/master/README.md#creatingloading-a-database). To use NeDB-Shell's create a new datastore in your database directory.
+This shell is meant for persistent datastores only. All the operations work on files that are saved to your local machine to persist the database. For reference of the options available to [NeDB](https://github.com/louischatriot/nedb) please refer to the [NeDB README](https://github.com/louischatriot/nedb/blob/master/README.md#creatingloading-a-database). To use NeDB-Shell's create a new datastore in your database directory.
   
   ```bash
   > cd <your database directory>
   > nedb-shell
-  > NeDB Shell: <DISPLAYS DATE>
+  > NeDB Shell: <DISPLAYS CURRENT DATE>
   > db.createDatastore('users',{ /* options */ }, //optional cb)
   
   # normal usage
   > db.createDatastore('users',{}) 
-  # this Sould simply load a new datastore file into the database that is now available for loading with new tables.
+  # This should simply load a new datastore file into the database.
   ```
-All created datastores are persistent and have the option autoload set to true. The callback is optional and if you decide not to place one there you will automatically receive error and success reporting. 
+All created datastores are persistent and have the option autoload set to true. The callback is optional and if you decide not to place one there you will automatically receive error and success reporting with an auto set callback. 
    
-As for loading the database this is done automatically when you open up nedb-shell if there are any .db files in that directory. When creating a datastore you do not need to append a .db, simply input the name only. When you create a new datastore it is auto loaded into the db object of the shell.
+As for loading the database this is done automatically when you open up NeDB-Shell, if there are any .db files in that directory. When creating a datastore you do not need to append a .db, simply input the name only. When you create a new datastore it is auto loaded into the db object.
 
 ### Inserting documents
 ```bash
@@ -81,24 +81,24 @@ As for loading the database this is done automatically when you open up nedb-she
 # Output
 > { firstName: 'John', lastName: 'Doe', _id: '1234567899876543' }
 ```
-There is no cursor involved with Insert so you cannot return the document to store in a variable. However the Find function does use a Cursor and you can use Find to return the value and store it. 
+There is no cursor involved with Insert so you cannot return the document to a variable. However the Find function does use a Cursor and you can use Find to return the value and store it in a variable. 
 
 
 ### Finding documents
 db.[name].Find(query, projection?, cb?), db.[name].FindOne(query,projection?,cb?). Below are some example uses for each find function. 
 
 ```bash
-db.users.Find({ firstName: 'John'}) 
+> db.users.Find({ firstName: 'John'}) 
 # this will return the Cursor and is not very usefull.
 # However there are many cursor functions availbable to be used
 #
-db.users.Find({ firstName: 'John' }).pretty() # pretty print the documents
-db.users.Find({ firstName: 'John' }).count()  # print count
-db.users.Find({ firstName: 'John' }).skip(1).limit(2).sort({_id: -1}) # returns a cursor
-db.users.Find({ firstName: 'John' }).skip(1).limit(2).sort({_id: -1}).pretty() # prints documents
+# .pretty() - pretty print the documents
+# .count() - print count / cannot be chained
+# .skip(1).limit(2).sort({_id: -1}) - returns a cursor
+# .skip(1).limit(2).sort({_id: -1}).pretty() - prints documents
 #
 # If you would like to run your own function against the returned cursor doc/docs
-db.users.Find({ firstName: 'John' }).exec(function(err, docs){ 
+# .exec(function(err, docs){ 
 ... // docs equals an array 
 ... }
 #
@@ -106,7 +106,7 @@ db.users.Find({ firstName: 'John' }).exec(function(err, docs){
 let johnUsers = db.users.Find({ firstName: 'John' }).toArray()
 # 
 #
-# There is also FindOne but Find is the only function that returns a cursor.
+# There is also FindOne, although this does not return a cursor.
 db.users.FindOne({ firstName: 'John' })
 > {
   "firstName": "John",
@@ -141,7 +141,7 @@ The Count function works just like the Find function but does not return a Curso
 ```
 
 ### Updating documents
-db.[name].Update(query, updateObject, options, optionalCallBack) updates only one document unless the multi option is set to true. I added a UpdateMany which has multi set to true automatically if you would rather leave the options empty. 
+db.[name].Update(query, updateObject, options, optionalCallBack).  Updates only one document unless the multi option is set to true. I added a UpdateMany which has multi set to true automatically if you would rather leave the options empty. 
 ```bash
 # Update a single document
 > db.users.Update({ firstName: "John"}, { firstName: "Phillip" })
@@ -155,7 +155,7 @@ db.[name].Update(query, updateObject, options, optionalCallBack) updates only on
 # To have either the affectedDocumentor affectedDocuments filled with the _id/s of changed 
 # documents you have to set `returnUpdatedDocs: true` in the `options`.
 #
-# Here I will update many and see the changed objects Ids
+# Here I will update many and see the changed object _ids
 db.users.Update({ firstName: "John"}, { firstName: "Phillip"}, {multi: true, 
 ... returnUpdatedDocs: true})
 > { changed: 3,
@@ -169,7 +169,7 @@ db.users.Update({ firstName: "John"}, { firstName: "Phillip"}, {multi: true,
 }
 ```
 ### Removing documents
-db.users.Remove(query, options, callback// optional) will remove one document but if you set `multi: true` in the options this will remove all the queried documents. 
+db.users.Remove(query, options, callback// optional) will remove one document but if you set `multi: true` in the options this will remove all documents matching the query. 
 ```bash
 > db.users.Remove({ firstName: "John"},{ multi: true})
 > { removed: 3 }
@@ -197,7 +197,7 @@ db.users.RemoveIndex(fieldName, cb)
 # Only On NeDB-Shell
 
 ### FindOneAndUpdate/FindOneAndRemove
-db.[name].FindOneAndUpdate(query,update,updateOptions?,cb?). db.[name].FindOneAndRemove(query,cb?). Both are not in the NeDB library but can be implemented. To add an extra simplicity these were added for users who would like to circumvent writing more code than needed.
+db.[name].FindOneAndUpdate(query,update,updateOptions?,cb?). db.[name].FindOneAndRemove(query,cb?). Both are not in the NeDB library but can be implemented. These were added for users who would like to circumvent writing more code than needed. This also adds another layer of error checking. If the FindOne comes back with an error the Update or Remove will not execute.
 
 ```bash
 # To find one document and update that single document in one query
@@ -247,7 +247,7 @@ db.[name].InsertMany(array,cb?). A callback is available and would function on e
 success
 success
 ```
-db.[name].UpdateMany(query,update,updateOptions?,cb?). 
+db.[name].UpdateMany(query,update,updateOptions?,cb?). For when You would rather not have to set `multi: true` in the options all the time. 
 ```bash
 # for an override 
 > db.UpdateMany({ name: 'John'},{ name: 'Sierra' },{ returnUpdateDocs: true})
@@ -257,12 +257,25 @@ db.[name].UpdateMany(query,update,updateOptions?,cb?).
   upsert: false }
 #
 # Use update options like $set to not override the entire document.
+#
+> db.UpdateMany({ name: 'John' }, { name: 'Sierra' })
+> { changed: 2,
+  affectedDocument: {},
+  affectedDocuments: [],
+  upsert: false }
+#
+# Again the _ids are only returned when returnUpdatedDocs is set to true in the options.
 ```
 
 ### Additional
-db.[name].Drop(). This function does not exist on the NeDB API but is available in the shell. 
-
+db.[name].Drop(). 
+db.[name].Help(). 
+db.Help().
 ```bash
 > db.users.Drop();
 # removes users.db from current directory. Also removes from db object.
+#
+> db.Help() # list all functions available on the db object.
+#
+> db.[name].Help() # List all functions on the datastore object.
 ```
