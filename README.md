@@ -43,7 +43,7 @@ This will open up a NodeJs shell with this NeDB wrapper module to work in the sh
 * <a href="#indexing">Indexing</a>
 * <a href="#only-on-nedb-shell">Only on NeDB-Shell</a>
    * <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
-   * <a href="#insertmany">InsertMany</a>
+   * <a href="#insertmany-updatemany">InsertMany UpdateMany</a>
    * <a href="#additional">Additional</a>
 
 ### Creating/loading a database
@@ -233,7 +233,7 @@ db.users.FindOneAndRemove({ firstName: 'John' })
 }
 ```
 
-### InsertMany
+### InsertMany UpdateMany
 db.[name].InsertMany(array,cb?). A callback is available and would function on each document in the array. If left blank there is an automatic callback that will log the error and the document it failed on. Great for pasting in an array of objects to insert. 
 ```bash
 > let bushel = [{ name: 'Chris'},{ name: 'Tom' },{ name: 'Mercedes'}];
@@ -246,6 +246,17 @@ db.[name].InsertMany(array,cb?). A callback is available and would function on e
 > success
 success
 success
+```
+db.[name].UpdateMany(query,update,updateOptions?,cb?). 
+```bash
+# for an override 
+> db.UpdateMany({ name: 'John'},{ name: 'Sierra' },{ returnUpdateDocs: true})
+> { changed: 2,
+  affectedDocument: {},
+  affectedDocuments: [ '132424523452345', '234524523423452' ],
+  upsert: false }
+#
+# Use update options like $set to not override the entire document.
 ```
 
 ### Additional

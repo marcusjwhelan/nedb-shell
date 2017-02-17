@@ -9,7 +9,8 @@ import {
   printFindOne, printFind, printCount,
   updateDocs, updateManyDocs, removeDocs,
   ensureDocIndex, removeDocIndex, Drop,
-  InsertMany, FindOneAndUpdate, FindOneAndRemove
+  InsertMany, FindOneAndUpdate, FindOneAndRemove,
+  Help
 } from '../datastore';
 
 export class Store extends NeDBDataStore{
@@ -44,6 +45,7 @@ export class Store extends NeDBDataStore{
   InsertMany = InsertMany;
   FindOneAndUpdate = FindOneAndUpdate;
   FindOneAndRemove = FindOneAndRemove;
+  Help = Help;
   // ----------------------------------------------------
 }
 
