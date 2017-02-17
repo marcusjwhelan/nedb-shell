@@ -49,5 +49,5 @@ program
 
 
 LoadDatastores();
-console.log(chalk.blue(`NeDB Shell: ${new Date()}`));
+console.log(chalk.blue(`NeDB-Shell: ${new Date()}`));
 Load(repl);
