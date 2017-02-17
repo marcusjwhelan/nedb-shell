@@ -16,6 +16,8 @@
   "keywords": [
     "nedb",
     "nedb-shell",
+    "Typescript",
+    "database",
     "shell"
   ],
   "author": "Marcus Whelan <marcus.j.whelan@gmail.com>",
