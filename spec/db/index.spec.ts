@@ -1,4 +1,4 @@
-import * as db from './index';
+import * as db from '../../bin/db/index';
 
 import { expect } from 'chai';
 import 'mocha';
