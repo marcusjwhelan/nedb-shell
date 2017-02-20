@@ -11,7 +11,8 @@
     "experimentalDecorators": true,
     "outDir": "built/",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "node_modules"
     ],
     "types": [
       "chalk", "commander", "nedb", "node"
