@@ -1,6 +1,6 @@
 {
   "name": "nedb-shell",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "engines": {
     "node": ">=6.9.x"
   },
@@ -45,10 +45,7 @@
     "typescript": "^2.1.5"
   },
   "bin": {
-    "nedb-shell": "./index.js"
-  },
-  "directories": {
-    "lib": "built"
+    "nedb-shell": "bin/index.js"
   },
   "main": "built/index.js",
   "typings": "built/index.d.ts"

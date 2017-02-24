@@ -34,15 +34,15 @@ gulp.task('clean', function () {
 });
 
 gulp.task('tsc', function(done) {
-  runSpawn(done, 'node', ['node_modules/typescript/bin/tsc']);
+  runSpawn(done, 'node', ['node_modules/typescript/lib/tsc']);
 });
 
 gulp.task('tsc:w', function(done) {
-  runSpawn(done, 'node', ['node_modules/typescript/bin/tsc', '-w']);
+  runSpawn(done, 'node', ['node_modules/typescript/lib/tsc', '-w']);
 });
 
 gulp.task('built:copy', function () {
-  return gulp.src(['bin/**/*.js'])
+  return gulp.src(['lib/**/*.js'])
     .pipe(gulp.dest('built/'));
 });
 
