@@ -42,7 +42,7 @@ gulp.task('tsc:w', function(done) {
 });
 
 gulp.task('built:copy', function () {
-  return gulp.src(['lib/**/*.js'])
+  return gulp.src(['bin/**/*.js'])
     .pipe(gulp.dest('built/'));
 });
 
