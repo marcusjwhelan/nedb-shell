@@ -5,7 +5,7 @@ export interface DataStore{
   timestampData?: boolean;
   nodeWebkitAppName?: string;
   corruptAlertThreshold?: number;
-  onload?: any;                   // function
+  onload?: any;
   afterSerialization?: any;       // function
   beforeDeserialization?: any;    // function
   compareStrings?: any;           // function
