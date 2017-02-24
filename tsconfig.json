@@ -16,10 +16,9 @@
     "types": [
       "chalk", "commander", "nedb", "node"
     ],
-    "bin": ["es6"]
+    "lib": ["es6"]
   },
   "exclude":[
-    "built",
     "node_modules"
   ]
 }
