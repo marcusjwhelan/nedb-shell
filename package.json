@@ -48,7 +48,7 @@
     "nedb-shell": "./index.js"
   },
   "directories": {
-    "lib": 'built'
+    "lib": "built"
   },
   "main": "built/index.js",
   "typings": "built/index.d.ts"
