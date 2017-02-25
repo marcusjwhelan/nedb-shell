@@ -10,4 +10,9 @@ export function Load(repl:any){
   //Include helper modules
   repl.context['_'] = lodash;
   repl.context.moment = moment;
+
+  //Clear REPL function
+  repl.context.clear = function () {
+    process.stdout.write('\x1B[2J\x1B[0f\u001b[0;0H');
+  }
 }
