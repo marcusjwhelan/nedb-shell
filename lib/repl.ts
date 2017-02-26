@@ -6,7 +6,7 @@ export let repl = require('repl').start({
   prompt: chalk.green('> '),
   useGlobal: true,
   ignoreUndefined: true,
-  writer: (output: any) => {
+  writer: (output: Cursor) => {
     if(output instanceof Cursor) {
       return output.pretty();
     }

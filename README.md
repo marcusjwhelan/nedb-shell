@@ -13,7 +13,7 @@ NeDB-Shell has the ability to use all the NeDB functions, for example.
    * db.[name].insert().exec();
    * db.[name].remove().exec();
 
-And with this package you will have an assortment of new functions on top of the NeDB functions. Check the <a href="#table-of-contents">Table of Contents</a> for all usages.
+And with this package you will have an assortment of new functions on top of the NeDB functions. Check the <a href="#table-of-contents">Table of Contents</a> for all usages. 
 
 
 ## Install
@@ -23,13 +23,15 @@ Install
 npm install -g nedb-shell
 ```
 
-To begin using NeDB-Shell you will need to navigate to your persistent database directory. If you do not have one yet and would like to create one it would be best to place your directory in AppData on Windows and for mac root.
+To begin using NeDB-Shell you will need to navigate to your persistent database directory. If you do not have one yet and would like to create one it would be best to place your directory in AppData on Windows and for mac root. All databases ending with `.db` in a directory will be loaded into the db object. If there are any files not ending in .db they will not be loaded into the db object for use. Also all created datastores will be created in the current directory with the `.db` syntax. 
 
 Once at your database location simply
 ```bash
 > nedb-shell
 ```
 This will open up a NodeJs shell with this NeDB wrapper module to work in the shell. This way you have all the use of NodeJs shell and NeDB pre-loaded with extra features. This includes auto completion for functions using dot notation.
+
+New additions of 1.1.0, moment and lodash as `_` are now pre-loaded.
 
 ## Table of Contents
 
@@ -89,8 +91,8 @@ db.[name].Find(query, projection?, cb?), db.[name].FindOne(query,projection?,cb?
 
 ```bash
 > db.users.Find({ firstName: 'John'}) 
-# this will return the Cursor and is not very usefull.
-# However there are many cursor functions availbable to be used
+# As of Version 1.1.0 this no longer logs a cursor.
+# Instead it defaults to the cursor function .pretty()
 #
 # .pretty() - pretty print the documents
 # .count() - print count / cannot be chained
@@ -102,7 +104,7 @@ db.[name].Find(query, projection?, cb?), db.[name].FindOne(query,projection?,cb?
 ... // docs equals an array 
 ... }
 #
-# If you would like to return the array of documents simple use the toArray() cursor function
+# If you would like to return the array of documents simply use the toArray() cursor function
 let johnUsers = db.users.Find({ firstName: 'John' }).toArray()
 # 
 #
@@ -278,4 +280,9 @@ db.Help().
 > db.Help() # list all functions available on the db object.
 #
 > db.[name].Help() # List all functions on the datastore object.
+#
+# Version 1.1.0 additions clear().
+# If you would like to clear the screen 
+> clear()
+
 ```

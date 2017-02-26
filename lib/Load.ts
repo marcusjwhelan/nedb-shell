@@ -1,6 +1,6 @@
 //const repl = require('repl');
 const moment = require('moment'),
-  lodash     = require('lodash');
+      lodash = require('lodash');
 
 export function Load(repl:any){
   for(let nedb_shell of ['db','show']){
