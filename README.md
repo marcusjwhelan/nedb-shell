@@ -45,7 +45,8 @@ New additions of 1.1.0, moment and lodash as `_` are now pre-loaded.
 * <a href="#indexing">Indexing</a>
 * <a href="#only-on-nedb-shell">Only on NeDB-Shell</a>
    * <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
-   * <a href="#insertmany-updatemany">InsertMany UpdateMany</a>
+   * <a href="#insertmany-updatemany-removemany">InsertMany UpdateMany RemoveMany</a>
+   * <a href="#drop">Drop</a>
    * <a href="#additional">Additional</a>
 
 ### Creating/loading a database
@@ -237,7 +238,7 @@ db.users.FindOneAndRemove({ firstName: 'John' })
 }
 ```
 
-### InsertMany UpdateMany
+### InsertMany UpdateMany RemoveMany
 db.[name].InsertMany(array,cb?). A callback is available and would function on each document in the array. If left blank there is an automatic callback that will log the error and the document it failed on. Great for pasting in an array of objects to insert. 
 ```bash
 > let bushel = [{ name: 'Chris'},{ name: 'Tom' },{ name: 'Mercedes'}];
@@ -250,6 +251,10 @@ db.[name].InsertMany(array,cb?). A callback is available and would function on e
 > success
 success
 success
+#
+> db.users.RemoveMany(<query>,cb?)
+# Auto sets multi to true. and outputs the same removed object string.
+# Optional callback. 
 ```
 db.[name].UpdateMany(query,update,updateOptions?,cb?). For when You would rather not have to set `multi: true` in the options all the time. 
 ```bash
@@ -271,14 +276,25 @@ db.[name].UpdateMany(query,update,updateOptions?,cb?). For when You would rather
 # Again the _ids are only returned when returnUpdatedDocs is set to true in the options.
 ```
 
-### Additional
-db.[name].Drop(). 
-db.[name].Help(). 
-db.Help().
+### Drop
+Added drop functionality to remove databases from the current directory. 
+
 ```bash
 > db.users.Drop();
 # removes users.db from current directory. Also removes from db object.
 #
+> db.Drop();
+> let dropList = ['users','locations','cities'];
+> db.Drop(dropList);
+# Without any array List db.Drop will drop all datastores in the current
+# directory.
+
+```
+
+### Additional
+Last but not least extra functions for help and other interactions not dealing with the datastores.
+
+```bash
 > db.Help() # list all functions available on the db object.
 #
 > db.[name].Help() # List all functions on the datastore object.
