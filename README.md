@@ -251,10 +251,6 @@ db.[name].InsertMany(array,cb?). A callback is available and would function on e
 > success
 success
 success
-#
-> db.users.RemoveMany(<query>,cb?)
-# Auto sets multi to true. and outputs the same removed object string.
-# Optional callback. 
 ```
 db.[name].UpdateMany(query,update,updateOptions?,cb?). For when You would rather not have to set `multi: true` in the options all the time. 
 ```bash
@@ -274,6 +270,14 @@ db.[name].UpdateMany(query,update,updateOptions?,cb?). For when You would rather
   upsert: false }
 #
 # Again the _ids are only returned when returnUpdatedDocs is set to true in the options.
+```
+
+db.[name].RemoveMany(query,cb?). For when you would rather not have to set the `multi: true` options query. 
+```bash
+> db.users.RemoveMany({name: 'John'})
+> { removed: 2 }
+# Auto sets multi to true. and outputs the same removed object string.
+# Optional callback. 
 ```
 
 ### Drop
