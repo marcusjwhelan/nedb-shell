@@ -1,10 +1,12 @@
 import { createDatastore } from './createDatastore';
-import { show } from './show';
+import { Show } from './show';
 import { Help } from './help';
+import { Drop } from './drop';
 
 const db:any = {
   createDatastore,
-  show,
+  Show,
+  Drop,
   Help
 };
 
