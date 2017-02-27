@@ -29,7 +29,9 @@ ${chalk.green(`db.[name].Update(query,update,updateOptions?,cb?)`)} - Update a s
 
 ${chalk.green(`db.[name].UpdateMany(query,update,updateOptions?,cb?`)} - Update many documents.
 
-${chalk.green(`db.[name].Remove(query,options)`)} - Remove one or many documents.
+${chalk.green(`db.[name].Remove(query,options,cb?)`)} - Remove one or many documents with optional callback.
+
+${chalk.green(`db.[name].RemoveMany(query,cb?)`)} - Remove many documents with optional callback.
 
 ${chalk.green(`db.[name].EnsureIndex(options)`)} - Create an index on a field name.
 
