@@ -29,7 +29,11 @@ const createCB = function (err: any) {
 export function createDatastore(name:string, query?:DataStore, cb?:any){
   localObj.name = '';
   localObj.query = {};
-  let q:DataStore = query;
+
+  let q:DataStore;
+  if(query){ q = query;}
+  else{ q = {}; }
+
   q.filename = `${name}.db`;
   q.autoload = true;
   let datastore = new nedb(q);

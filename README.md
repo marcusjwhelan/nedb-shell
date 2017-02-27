@@ -60,6 +60,8 @@ This shell is meant for persistent datastores only. All the operations work on f
   # normal usage
   > db.createDatastore('users',{}) 
   # This should simply load a new datastore file into the database.
+  # Users can now do without the options object.
+  > db.createDatastore('users')
   ```
 All created datastores are persistent and have the option autoload set to true. The callback is optional and if you decide not to place one there you will automatically receive error and success reporting with an auto set callback. 
    
