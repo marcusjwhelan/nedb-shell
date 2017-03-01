@@ -1,4 +1,3 @@
-//import { Cursor } from '../cursor';
 import * as chalk from 'chalk';
 
 const findOneCB = function (err:Error, doc:{}):void {

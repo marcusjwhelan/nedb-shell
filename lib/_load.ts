@@ -3,7 +3,7 @@ const moment = require('moment'),
       lodash = require('lodash');
 
 export function Load(repl:any){
-  for(let nedb_shell of ['db']){
+  for(let nedb_shell of ['db','load']){
     repl.context[nedb_shell] = require(`./${nedb_shell}`);
   }
 
