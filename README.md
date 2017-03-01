@@ -292,7 +292,38 @@ Added drop functionality to remove databases from the current directory.
 > db.Drop(dropList);
 # Without any array List db.Drop will drop all datastores in the current
 # directory.
+```
+### Load External Modules
+This feature should give you a great place to test code out on the nodejs shell running in ES6. I have added the ability for anyone to load in their own `.js` files into the context of this shell. These of course have to be either written in or compiled to ES6 or lower javascript modules. Lets say I have my persistent database at `~/data` and I have my `.js` module functions in another directory, lets say `~/scripts`. The path `/Users/<yourUserName>` has to be used in place of `~`. So to accesss your scripts from any directory past `~`, you will need to pass in that path. 
 
+```bash
+# to load in one singular function into the context
+> load.Function('/Users/<yourUserName>/scripts/add_two.js')
+# now you can use add_two as a function in the context of the shell.
+> add_two(2,2) 
+> 4
+# If you would like to load an entire directory of functions you simply
+# point to the directory you would like to load.
+> load.Directory('/Users/<yourUserName>/scripts')
+#
+# Now all the .js files in that directory are loaded into the context.
+# To see all the functions you have loaded in simple use show
+> load.Show()
+add_two
+add_five
+#
+```
+
+Now that you know how to load in the functions you have created, how exactly do these need to look to be loaded in correctly. Simply use nodejs modules in each file or even create a module that loads many modules out of a nested directory. 
+
+```javascript
+// Example add_two.js
+"use strict";
+
+module.exports = (a,b) => a+b;
+// that is is. The name of the function in the context will be the name 
+// of the file the module is in. So add_two's function will be used as 
+// add_two(2,2);
 ```
 
 ### Additional
@@ -300,7 +331,7 @@ Last but not least extra functions for help and other interactions not dealing w
 
 ```bash
 > db.Help() # list all functions available on the db object.
-#
+> load.Help() # list all the functions available on the load object.
 > db.[name].Help() # List all functions on the datastore object.
 #
 # Version 1.1.0 additions clear().
