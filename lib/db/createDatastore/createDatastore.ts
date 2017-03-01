@@ -6,7 +6,6 @@ import { DataStore } from '../interfaces';
 import { getDB } from '../../index';
 import { Store } from '../datastore/store';
 import { DATASTORES } from '../../singletons';
-import db = require('../../db');
 
 const localObj = {
   name: '',
