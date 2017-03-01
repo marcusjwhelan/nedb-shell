@@ -47,6 +47,7 @@ New additions of 1.1.0, moment and lodash as `_` are now pre-loaded.
    * <a href="#findoneandupdatefindoneandremove">FindOneAndUpdate/FindOneAndRemove</a>
    * <a href="#insertmany-updatemany-removemany">InsertMany UpdateMany RemoveMany</a>
    * <a href="#drop">Drop</a>
+   * <a href="#load-external-modules">Load External Modules</a>
    * <a href="#additional">Additional</a>
 
 ### Creating/loading a database
