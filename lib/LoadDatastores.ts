@@ -29,6 +29,5 @@ export const LoadDatastores = ():void => {
       console.log(e);
       console.log(`No Datastores in directory: ${process.cwd()}`);
     }
-
   });
 };
