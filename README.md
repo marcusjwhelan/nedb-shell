@@ -1,6 +1,14 @@
 # NeDB-Shell
 A Mongo like shell for NeDB
 
+## Message
+This shell currently does not hot reload with modifications made by external applications. For example
+If you have two shells open and edit the database in one shell this will not be reflected in the other.
+The same goes for having an application running along with the NeDB-Shell, you will have to restart
+the shell to see the changes made. A file watcher will be added later but currently am working on 
+another project. 
+
+
 ## Pre Install to Use
 
 Install [NodeJs ^6.9.x](https://nodejs.org/en/) 
